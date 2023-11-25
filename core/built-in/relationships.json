@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Built-in Relationship Schema for UOR-DPL Predicates",
+    "type": "object",
+    "description": "Defines various types of relationships for predicates in UOR Statements, particularly focusing on runtime and programming concepts.",
+    "properties": {
+        "relationshipType": {
+            "type": "string",
+            "enum": [
+                "contains", 
+                "belongsTo", 
+                "references", 
+                "associatedWith", 
+                "partOf", 
+                "dependsOn", 
+                "implements", 
+                "extends", 
+                "calls", 
+                "executes", 
+                "triggers", 
+                "synchronizesWith", 
+                "inherits", 
+                "composes", 
+                "aggregates", 
+                "instantiates", 
+                "serializesTo", 
+                "deserializesFrom", 
+                "overrides", 
+                "interactsWith"
+            ],
+            "description": "Categorization of the relationship, defined as an enumeration."
+        },
+        "attributes": {
+            "type": "object",
+            "description": "Generic attributes applicable to all relationships.",
+            "properties": {
+                "createdAt": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp of when the relationship was established."
+                },
+                "createdBy": {
+                    "type": "string",
+                    "description": "Identifier of the entity or process that established the relationship."
+                },
+                "validUntil": {
+                    "type": "string",
+                    "format": "date-time",
+                    "description": "Timestamp indicating when the relationship ceases to be valid."
+                },
+                "strength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "A numeric value representing the strength or intensity of the relationship."
+                },
+                "context": {
+                    "type": "string",
+                    "description": "Additional context or notes about the relationship."
+                }
+            },
+            "additionalProperties": false
+        }
+    },
+    "required": ["relationshipType"],
+    "additionalProperties": false
+}

@@ -1,0 +1,37 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "OCI Descriptor",
+    "type": "object",
+    "description": "OCI Descriptor is the default UOR data pointer descriptor.",
+    "properties": {
+      "mediaType": {
+        "type": "string",
+        "description": "The MIME type of the referenced object. This should generally be a manifest, index, layer, or config."
+      },
+      "digest": {
+        "type": "string",
+        "description": "The digest of the targeted content, as defined by the OCI Image Specification."
+      },
+      "size": {
+        "type": "integer",
+        "description": "The size in bytes of the blob."
+      },
+      "urls": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "format": "uri"
+        },
+        "description": "A list of URLs from which this object MAY be downloaded."
+      },
+      "annotations": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "description": "A set of key-value pairs providing additional information about the content. This is optional."
+      }
+    },
+    "required": ["mediaType", "digest", "size"]
+  }
+  

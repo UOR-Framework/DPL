@@ -1,0 +1,1 @@
+The [UOR Statement](./core/built-in/statement.json) is the knowledge graph constructor of the UOR DPL. It is a JSON formatted semantic triple to express the relationship between data. The UOR Statement links arbitrary UOR Elements, so the UOR Statement can be used to link between dissimilar schemas. 

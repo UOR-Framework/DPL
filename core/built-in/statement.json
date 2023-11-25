@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UOR Statement",
+    "type": "object",
+    "properties": {
+        "subject": {
+            "$ref": "../element.json",
+            "description": "The subject of the UOR Statement."
+        },
+        "predicate": {
+            "$ref": "../element.json",
+            "description": "The predicate of the UOR Statement."
+        },
+        "object": {
+            "$ref": "../element.json",
+            "description": "The object of the UOR Statement."
+        },
+        "uorVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-([0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*))?(\u002B[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?$",
+            "description": "Semantic Versioning (SemVer) of the UOR Statement."
+        },
+        "schemaType": {
+            "type": "string",
+            "description": "Type of schema used in the UOR Statement."
+        }
+    },
+    "required": ["subject", "predicate", "object", "uorVersion", "schemaType"],
+    "additionalProperties": false
+}

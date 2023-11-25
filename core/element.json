@@ -1,0 +1,34 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UOR Element",
+    "type": "object",
+    "properties": {
+        "locatorType": {
+            "$ref": "#",
+            "description": "The UOR Element representing the type of locator for this UOR Element."
+        },
+        "resourceType": {
+            "$ref": "#",
+            "description": "The UOR Element representing the type of resource for this UOR Element."
+        },
+        "location": {
+            "type": "object",
+            "description": "The location details for the UOR Element, if applicable."
+        },
+        "resource": {
+            "type": "object",
+            "description": "The resource details for the UOR Element."
+        },
+        "uorVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-([0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*))?(\u002B[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?$",
+            "description": "The semantic versioning of the UOR Element."
+        },
+        "schemaType": {
+            "type": "string",
+            "description": "A string identifying the schema type of the object."
+        }
+    },
+    "required": ["resourceType", "resource", "uorVersion", "resType"],
+    "additionalProperties": false
+}

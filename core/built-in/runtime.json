@@ -1,0 +1,30 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UOR Runtime",
+    "type": "object",
+    "properties": {
+        "moduleName": {
+            "type": "string",
+            "description": "Name of the module."
+        },
+        "moduleDescription": {
+            "type": "string",
+            "description": "Description of what the module does and how it processes data."
+        },
+        "uorVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-([0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*))?(\u002B[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?$",
+            "description": "Semantic Versioning (SemVer) of the UOR Runtime module."
+        },
+        "schemaType": {
+            "type": "string",
+            "description": "Schema type of this object."
+        },
+        "entrypoint": {
+            "type": "string",
+            "description": "Name of the exported function from the module that serves as the entrypoint."
+        }
+    },
+    "required": ["moduleName", "moduleURL", "uorVersion", "schemaType", "entrypoint"],
+    "additionalProperties": false
+}

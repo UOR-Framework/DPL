@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Git Repository",
+    "description": "A representation of a Git repository's data structures",
+    "type": "object",
+    "properties": {
+      "branches": {
+        "type": "object",
+        "additionalProperties": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "description": "A mapping of branch names to their latest commit hashes"
+      },
+      "commits": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/commit" },
+        "description": "An array of commit objects"
+      },
+      "trees": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/tree" },
+        "description": "An array of tree objects representing directory listings"
+      },
+      "blobs": {
+        "type": "array",
+        "items": { "$ref": "#/definitions/blob" },
+        "description": "An array of blob objects representing file contents"
+      }
+    },
+    "definitions": {
+      "commit": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "tree": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "parents": {
+            "type": "array",
+            "items": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+            "description": "Array of parent commit hashes, can be empty for initial commit"
+          },
+          "author": { "$ref": "#/definitions/user" },
+          "committer": { "$ref": "#/definitions/user" },
+          "message": { "type": "string" },
+          "timestamp": { "type": "string", "format": "date-time" }
+        },
+        "required": ["id", "tree", "author", "committer", "message", "timestamp"],
+        "description": "A commit object with author, committer, and other metadata"
+      },
+      "tree": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "entries": {
+            "type": "array",
+            "items": { "$ref": "#/definitions/treeEntry" }
+          }
+        },
+        "required": ["id", "entries"],
+        "description": "A tree object representing a snapshot of the repository"
+      },
+      "treeEntry": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string" },
+          "mode": { "type": "string", "pattern": "^[0-7]{3,4}$" },
+          "type": { "type": "string", "enum": ["blob", "tree"] },
+          "id": { "type": "string", "pattern": "^[0-9a-f]{40}$" }
+        },
+        "required": ["path", "mode", "type", "id"],
+        "description": "An entry in a tree, representing a file or a subdirectory"
+      },
+      "blob": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+          "content": { "type": "string", "contentEncoding": "base64" }
+        },
+        "required": ["id", "content"],
+        "description": "A blob object containing file content encoded in base64"
+      },
+      "user": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "date": { "type": "string", "format": "date-time" }
+        },
+        "required": ["name", "email", "date"],
+        "description": "User information including name, email, and date of the action"
+      }
+    }
+  }
+  

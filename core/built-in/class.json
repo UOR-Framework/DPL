@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "UOR Class",
+    "type": "object",
+    "properties": {
+        "schema": {
+            "$ref": "../element.json",
+            "description": "Reference to the UOR Element schema."
+        },
+        "uorVersion": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(-([0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*))?(\u002B[0-9A-Za-z-]+(\\.[0-9A-Za-z-]+)*)?$",
+            "description": "Semantic Versioning (SemVer) of the UOR Class."
+        },
+        "schemaType": {
+            "type": "string",
+            "description": "Identifier for the schema type of the object."
+        }
+    },
+    "required": ["schema", "uorVersion", "resType"]
+}

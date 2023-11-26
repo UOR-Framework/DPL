@@ -11,6 +11,8 @@ The resourceType field of the UOR Element is used to specify the type of data th
 
 ## Built-in Types
 
+[Atomic Signature](./core/built-in/atomic_signature.json): An Atomic Signature is a type that represents a cryptographic signatureS.
+
 [UOR Class](./class.md): A UOR Class is a type that represents a data structure and methods that can be used to manipulate that data structure.
 
 [OCI Descriptor](./descriptor.md): An OCI Descriptor is a type that represents a pointer to data. 
